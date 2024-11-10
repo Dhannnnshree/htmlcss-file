@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account</title>
+    <link rel="stylesheet" href="create_account.css">
+    <style>
+        /* CSS for real-time feedback */
+        .feedback {
+            font-size: 12px;
+            color: red;
+            display: none;
+        }
+        .valid {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="create-account-box">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon Logo" class="logo">
+            <h2>Create Account</h2>
+            <form action="#" method="POST" id="createAccountForm">
+                <div class="input-box">
+                    <label for="name">Your name</label>
+                    <input type="text" id="name" name="name" required>
+                    <p class="feedback" id="nameFeedback">Please fill this field.</p>
+                </div>
+                <div class="input-box">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                    <p class="feedback" id="emailFeedback">Please enter a valid email.</p>
+                </div>
+                <div class="input-box">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                    <p class="feedback" id="passwordFeedback">
+                        Password must be at least 8 characters, contain a number, an uppercase letter, and a special character.
+                    </p>
+                </div>
+                <div class="input-box">
+                    <label for="confirm-password">Re-enter password</label>
+                    <input type="password" id="confirm-password" name="confirm-password" required>
+                    <p class="feedback" id="confirmPasswordFeedback">Passwords do not match.</p>
+                </div>
+                <button type="button" class="btn" onclick="window.location.href='login.html'">Create your Amazon account</button>
+
+            </form>
+            <p>By creating an account, you agree to Amazon's <a href="#">Conditions of Use</a> and <a href="#">Privacy Notice</a>.</p>
+            <div class="already-account">
+                <p>Already have an account? <a href="login.html">Sign-In</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById('createAccountForm');
+        const nameInput = document.getElementById('name');
+        const emailInput = document.getElementById('email');
+        const passwordInput = document.getElementById('password');
+        const confirmPasswordInput = document.getElementById('confirm-password');
+
+        const nameFeedback = document.getElementById('nameFeedback');
+        const emailFeedback = document.getElementById('emailFeedback');
+        const passwordFeedback = document.getElementById('passwordFeedback');
+        const confirmPasswordFeedback = document.getElementById('confirmPasswordFeedback');
+
+        const passwordPattern = /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).{8,}$/;
+
+        // Real-time password validation
+        passwordInput.addEventListener('input', () => {
+            const password = passwordInput.value;
+            if (passwordPattern.test(password)) {
+                passwordFeedback.textContent = "Strong password!";
+                passwordFeedback.classList.add('valid');
+                passwordFeedback.style.display = 'block';
+            } else {
+                passwordFeedback.textContent = 
+                  "Password must be at least 8 characters, contain a number, an uppercase letter, and a special character.";
+                passwordFeedback.classList.remove('valid');
+                passwordFeedback.style.display = 'block';
+            }
+        });
+
+        // Check if passwords match
+        confirmPasswordInput.addEventListener('input', () => {
+            if (confirmPasswordInput.value !== passwordInput.value) {
+                confirmPasswordFeedback.style.display = 'block';
+            } else {
+                confirmPasswordFeedback.style.display = 'none';
+            }
+        });
+
+        // Form submission event with empty field check
+        form.addEventListener('submit', (e) => {
+            let valid = true;
+
+            // Validate name
+            if (!nameInput.value.trim()) {
+                nameFeedback.style.display = 'block';
+                valid = false;
+            } else {
+                nameFeedback.style.display = 'none';
+            }
+
+            // Validate email
+            if (!emailInput.value.trim() || !emailInput.checkValidity()) {
+                emailFeedback.style.display = 'block';
+                valid = false;
+            } else {
+                emailFeedback.style.display = 'none';
+            }
+
+            // Validate password
+            if (!passwordPattern.test(passwordInput.value)) {
+                passwordFeedback.style.display = 'block';
+                valid = false;
+            }
+
+            // Validate confirm password
+            if (confirmPasswordInput.value !== passwordInput.value) {
+                confirmPasswordFeedback.style.display = 'block';
+                valid = false;
+            }
+
+            if (!valid) {
+                e.preventDefault(); // Prevent form submission if any field is invalid
+                alert("Please fill all required fields correctly.");
+            }
+        });
+    </script>
+</body>
+</html>

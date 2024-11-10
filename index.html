@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project</title>
+    <title>Amazon Clone</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="style.css">
 </head>
@@ -23,7 +23,14 @@
             </div>
             <div class="nav-search">
                 <select class="search-select">
-                    <option>All</option>
+                    <option value="all">All</option>
+                        <option value="books">Books</option>
+                        <option value="electronics">Electronics</option>
+                        <option value="clothing">Clothing</option>
+                        <option value="home">Home & Kitchen</option>
+                        <option value="toys">Toys & Games</option>
+                        <option value="sports">Sports & Outdoors</option>
+                        <option value="grocery">Grocery</option>
                 </select>
                 <input placeholder="Search Amazon" class="search-input">
                 <div class="search-icon">
@@ -31,7 +38,7 @@
                 </div>
             </div>
             <div class="nav-signin border">
-                <p><span>Hello,Sign in</span></p>
+                <p><span>Hello,<a href="login.html" style="text-decoration: none; color: white; ">Sign in</a></span></p>
                 <p class="nav-sec">Account & lists</p>
             </div>
             <div class="nav-signin border">
@@ -40,7 +47,7 @@
             </div>
             <div class="nav-cart border">
                 <i class="fa-solid fa-cart-shopping"></i>
-                Cart
+                <a href="shoping_cart.html" style="text-decoration: none; color: white;">Cart</a>
             </div>
         </div>
         <div class="panel">
@@ -50,7 +57,9 @@
             </div>
             <div class="panel-ops">
                 <p>Today's Deals</p>
-                <p>Customer Service</p>
+                
+                <a href="customer_service.html" style="text-decoration: none; color: white;"> Customer Service</a>
+                
                 <p>Registry</p>
                 <p>Gift Cards</p>
                 <p>Sell</p>
@@ -67,62 +76,45 @@
         
     </div>
     <div class="shop-section">
-        <div class="box1 box">
-            <div class="box-content">
-                <h2>Upgrade your Office Furniture</h2>
-                <div class="box1-img" style="background-image: url('/box1.jpg');"></div>
-                <p>See more</p>
-            </div>
-        </div>
-        <div class="box2 box">
-            <div class="box-content">
-                <h2>Beauty Steals Under $25</h2>
-                <div class="box1-img" style="background-image: url('box2.jpg');"></div>
-                <p>See more</p>
-            </div>
-        </div>
-        <div class="box3 box">
-            <div class="box-content">
-                <h2>Deals in PCs</h2>
-                <div class="box1-img" style="background-image: url('/box3.jpg');"></div>
-                <p>See more</p>
-            </div>
-        </div>
-        <div class="box4 box">
-            <div class="box-content">
-                <h2>Shop best-selling categories</h2>
-                <div class="box1-img" style="background-image: url('/box4.jpg');"></div>
-                <p>See more</p>
-            </div>
-        </div>
-        <div class="box1 box">
+        <div class="box">
             <div class="box-content">
                 <h2>Toys under $25</h2>
-                <div class="box1-img" style="background-image: url('/box5.jpg');"></div>
+                <a href="pro4.html">
+                    <div class="box1-img" style="background-image: url('/box5.jpg');"></div>
+                </a>
                 <p>See more</p>
             </div>
         </div>
-        <div class="box2 box">
+        <div class="box">
             <div class="box-content">
                 <h2>A whole new way to work</h2>
-                <div class="box1-img" style="background-image: url('/box6.jpg');"></div>
+                <a href="pro3.html">
+                    <div class="box1-img" style="background-image: url('/box6.jpg');"></div>
+                </a>
                 <p>See more</p>
             </div>
         </div>
-        <div class="box3 box">
+        <div class="box">
             <div class="box-content">
-                <h2>Shop activity trakers and smart watches</h2>
-                <div class="box1-img" style="background-image: url('/box7.jpg');"></div>
+                <h2>Shop activity trackers and smart watches</h2>
+                <a href="product1.html">
+                    <div class="box1-img" style="background-image: url('/box7.jpg');"></div>
+                </a>
                 <p>See more</p>
             </div>
         </div>
-        <div class="box4 box">
+        <div class="box">
             <div class="box-content">
                 <h2>Personal Care Under $25</h2>
-                <div class="box1-img" style="background-image: url('/box8.jpg');"></div>
+                <a href="pro2.html">
+                    <div class="box1-img" style="background-image: url('/box8.jpg');"></div>
+                </a>
                 <p>See more</p>
             </div>
         </div>
+    </div>
+    
+        
     </div>
     <footer>
         <div class="foot-panel1">

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="shoping_cart.css">
+    <style>
+        .rating-container {
+            display: flex;
+            gap: 5px;
+            margin-top: 10px;
+        }
+
+        .star {
+            font-size: 20px;
+            color: lightgray;
+            cursor: pointer;
+        }
+
+        .star.selected,
+        .star.hover {
+            color: gold;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Your Shopping Cart</h1>
+    </header>
+    <div class="cart-container">
+        <div class="cart-item">
+            <img src="/cart1.jpg" alt="Product Image">
+            <div class="item-details">
+                <h3>Cleaning Products</h3>
+                <p>Price: $199.99</p>
+                <label for="quantity">Quantity:</label>
+                <input type="number" id="quantity1" name="quantity" value="1">
+                <button class="btn">Remove</button>
+                
+                <!-- Rating System -->
+                <div class="rating-container" data-item-id="1" data-rating="0">
+                    <span class="star" data-value="1">&#9733;</span>
+                    <span class="star" data-value="2">&#9733;</span>
+                    <span class="star" data-value="3">&#9733;</span>
+                    <span class="star" data-value="4">&#9733;</span>
+                    <span class="star" data-value="5">&#9733;</span>
+                </div>
+                <div class="rating-message" id="ratingMessage1"></div>
+            </div>
+        </div>
+        
+        <div class="cart-item">
+            <img src="/cart2.jpg" alt="Product Image">
+            <div class="item-details">
+                <h3>Home Decor</h3>
+                <p>Price: $249.99</p>
+                <label for="quantity">Quantity:</label>
+                <input type="number" id="quantity2" name="quantity" value="1">
+                <button class="btn">Remove</button>
+                
+                <!-- Rating System -->
+                <div class="rating-container" data-item-id="2" data-rating="0">
+                    <span class="star" data-value="1">&#9733;</span>
+                    <span class="star" data-value="2">&#9733;</span>
+                    <span class="star" data-value="3">&#9733;</span>
+                    <span class="star" data-value="4">&#9733;</span>
+                    <span class="star" data-value="5">&#9733;</span>
+                </div>
+                <div class="rating-message" id="ratingMessage2"></div>
+            </div>
+        </div>
+
+        <div class="cart-summary">
+            <h2>Subtotal (2 items): $449.98</h2>
+            <button class="btn"><a href="checkout.html" style="text-decoration: none; color: black;">Proceed to Checkout</a></button>
+        </div>
+    </div>
+
+    <script>
+        const stars = document.querySelectorAll('.star');
+
+        // Handle mouse hover effect
+        stars.forEach(star => {
+            star.addEventListener('mouseover', () => {
+                const ratingContainer = star.parentElement;
+                const starsInContainer = ratingContainer.querySelectorAll('.star');
+                const value = star.dataset.value;
+                highlightStars(starsInContainer, value);
+            });
+
+            star.addEventListener('mouseout', () => {
+                const ratingContainer = star.parentElement;
+                const starsInContainer = ratingContainer.querySelectorAll('.star');
+                const currentRating = ratingContainer.getAttribute('data-rating');
+                resetStars(starsInContainer, currentRating);
+            });
+
+            star.addEventListener('click', () => {
+                const ratingContainer = star.parentElement;
+                const starsInContainer = ratingContainer.querySelectorAll('.star');
+                const value = star.dataset.value;
+                setRating(starsInContainer, value, ratingContainer);
+            });
+        });
+
+        function highlightStars(stars, rating) {
+            stars.forEach(star => {
+                star.classList.toggle('hover', star.dataset.value <= rating);
+            });
+        }
+
+        function resetStars(stars, currentRating) {
+            stars.forEach(star => {
+                star.classList.remove('hover');
+                star.classList.toggle('selected', star.dataset.value <= currentRating);
+            });
+        }
+
+        function setRating(stars, rating, container) {
+            stars.forEach(star => {
+                star.classList.toggle('selected', star.dataset.value <= rating);
+            });
+            container.setAttribute('data-rating', rating); // Save the rating
+            const ratingMessage = container.nextElementSibling;
+            ratingMessage.textContent = `You rated this item ${rating} star(s)!`;
+        }
+    </script>
+</body>
+</html>

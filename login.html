@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" 
+    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" 
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="login.css">
+
+    <style>
+        .error {
+            color: red;
+            font-size: 14px;
+            display: none;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="login-box">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon Logo" class="logo">
+            <h2>Sign-In</h2>
+            <form id="loginForm">
+                <div class="input-box">
+                    <label for="email">Email or mobile phone number</label>
+                    <input type="email" id="email" name="email" placeholder="Email ID" required>
+                    <p class="error" id="emailError">Please enter your email.</p>
+                </div>
+                <div class="input-box">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Password" required>
+                    <p class="error" id="passwordError">Please enter your password.</p>
+                </div>
+                <button type="button" class="btn" onclick="validateAndRedirect()">Continue</button>
+            </form>
+            <p>By continuing, you agree to Amazon's <a href="#">Conditions of Use</a> and <a href="#">Privacy Notice</a>.</p>
+            <div class="new-account">
+                <p>New to Amazon?</p>
+                <a href="create_account.html" class="create-account-btn">Create your Amazon account</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function validateAndRedirect() {
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value.trim();
+            const emailError = document.getElementById('emailError');
+            const passwordError = document.getElementById('passwordError');
+
+            let isValid = true;
+
+            // Check email field
+            if (email === "") {
+                emailError.style.display = 'block';
+                isValid = false;
+            } else {
+                emailError.style.display = 'none';
+            }
+
+            // Check password field
+            if (password === "") {
+                passwordError.style.display = 'block';
+                isValid = false;
+            } else {
+                passwordError.style.display = 'none';
+            }
+
+            // Redirect if both fields are valid
+            if (isValid) {
+                window.location.href = "/index.html";
+            }
+        }
+    </script>
+</body>
+</html>

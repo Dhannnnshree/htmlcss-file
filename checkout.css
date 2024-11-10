@@ -1,0 +1,25 @@
+/* Add this to your existing style.css */
+
+.checkout-container {
+    padding: 20px;
+    max-width: 600px;
+    margin: auto;
+}
+
+.input-box {
+    margin-bottom: 20px;
+}
+
+.input-box label {
+    font-size: 14px;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.input-box input {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
